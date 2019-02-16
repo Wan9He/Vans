@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			.box-F{
+				width:725px;
+				height: 725px;
+				background:white;
+				border: 1px solid gray;
+				position: relative;
+				
+			}
+			.box-F img{
+				width: 100%;
+			}
+			.small-box img{
+				width: 86px;
+				height: 86px;
+				margin-top: 730px;
+				margin-left:10px;
+				border: 1px solid red;
+				
+			}
+			.right-box{
+				width:588px;
+				height: 588px;
+				border: 1px solid gray;
+				position:absolute;
+				left:726px;
+				top: 0;
+				display: none;
+			}
+			
+			.focus{
+				width: 248px;
+				height: 248px;
+				background: lightskyblue;
+				position: absolute;
+				opacity: 0.6;
+				display: none;
+				z-index: 10;
+			}
+			.patch{
+				width: 100%;
+				height: 100%;
+				position: absolute;
+				top: 0;	
+				left: 0;
+				z-index: 999;
+			}
+			
+		</style>
+	</head>
+	<body>
+		
+				
+		
+		<div class="box-F">
+			<img src="x1.jpg">
+			<div class="focus"></div>
+			<div class="patch"><div>		
+		</div>
+		<div class="right-box">
+			<img src="x1.jpg">
+		</div>
+		<div class="small-box">
+			<img src="x1.jpg" >
+		</div>
+		<script>
+			var focus = document.querySelector(".focus");
+			var big_wrap = document.querySelector(".right-box");
+			var small_wrap = document.querySelector(".box-F");
+			var big_bg = big_wrap.children[0];
+			var prop = big_wrap.offsetWidth / focus.offsetWidth;
+			big_bg.style.width = prop * small_wrap.offsetWidth + "px";
+			big_bg.style.height = prop * small_wrap.offsetHeight + "px";
+			small_wrap.addEventListener("mousemove",eleMove)
+			function eleMove(evt){
+				var e = evt || window.event;
+				var _left = e.offsetX;
+				var _top = e.offsetY;
+				_left = _left - focus.offsetWidth / 2 ;
+				_top = _top - focus.offsetHeight / 2;
+				_left = _left <= 0 ? 0 : _left;
+				_top = _top <= 0 ? 0 : _top;
+				 var maxLeft = small_wrap.offsetWidth - focus.offsetWidth;
+				                  var maxTop =  small_wrap.offsetHeight - focus.offsetHeight;
+				            small_wrap.addEventListener("mouseenter" , toggle.bind(false,"show"));
+				            small_wrap.addEventListener("mouseleave" , toggle.bind(false,"hide"));
+				
+				            function toggle(type){ 
+				                  var display = null;
+				                  if(type === "show"){
+				                        display = "block";
+				                  }else{
+				                        display = "none";
+				                  }
+				                  focus.style.display = display;
+				                  big_wrap.style.display = display;
+				            }
+				
+				                  _left = _left >= maxLeft ? maxLeft : _left;
+				                  _top = _top >= maxTop ? maxTop : _top;
+				focus.style.left = _left + "px";
+				focus.style.top = _top + "px";
+				
+			}
+			
+		</script>
+	</body>
+</html>

@@ -1,0 +1,23 @@
+{
+	"shop":{
+		"list":[
+				{	
+				"img1":"x1.jpg",
+				"img2":"x11.jpg",
+				"name":"男款背包",
+				"price":"￥360"
+				},
+				{
+				"img1":"x2.jpg",
+				"img2":"x22.jpg",
+				"name":"男款夹克",
+				"price":"￥590"
+				},
+				{
+				"img1":"x3.jpg",
+				"img2":"x33.jpg",
+				"name":"男款钱包",
+				"price":"￥160"
+				}
+		]
+	}
